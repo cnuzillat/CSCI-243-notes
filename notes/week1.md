@@ -1,4 +1,4 @@
-# Lecture 1
+# General: Programming paradigms; Environments; Modular design & development and C: Language history & overview
 
 ## Origin of C Programming Language
 
