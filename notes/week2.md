@@ -225,14 +225,272 @@ Nested Loops
 
 int main() {
   int i, j;
+  int flag = 0;
 
   for (i = 0; i <= 5; i++ ) {
     for (j = 1; j <= 5;) {
       printf("%d, %d\n", i, j);
       if (i * j == 12) {
-        
+        flag = 1;
+        break;
+      }
+    }
+    if (flag) {
+      break;
+    }
+  }
+  printf("Found 12. Outisde of loops!\n");
+}
+```
+
+Goto
+```
+#include <stdio.h>
+
+int main() {
+  int i, j;
+  int flag = 0;
+
+  for (i = 0; i <= 5; i++ ) {
+    for (j = 1; j <= 5;) {
+      printf("%d, %d\n", i, j);
+      if (i * j == 12) {
+        goto exit_loops
+        break;
       }
     }
   }
+  exit_loops:
+  printf("Found 12. Outisde of loops!\n");
+}
+```
+
+Continue
+```
+#include <stdio.h>
+
+int main() {
+  for (int i = 1; i < 20; i++) {
+    if (i % 2 == 0) {
+      continue;
+    }
+    printf("%d\n", i);
+  }
+}
+```
+
+Global Variables
+```
+#include <stdio.h>
+
+int gblVar = 10;
+
+void fun() {
+  gblVar += 5;
+  printf("%d\n", glbVar);
+}
+
+int main() {
+  printf("%d\n", glbVar);
+  fun();
+  printf("%d\n", glbVar);
+}
+```
+Output:
+```
+10
+15
+15
+```
+
+Global Variables 2
+```
+#include <stdio.h>
+
+int x = 10;
+
+void fun(int x) {
+  x += 5;
+  printf("%d\n", x);
+}
+
+void fun2() {
+  printf("%d\n", x);
+}
+
+int main() {
+  printf("%d\n", x); //Global
+  int x = 5; //Local
+  printf("%d\n", x);
+  fun(x);
+  printf("%d\n", x);
+  fun2();
+}
+```
+Output:
+```
+10
+5
+10
+5
+10
+```
+
+## Type Specifiers
+
+You can use to alter type characteristic
+
+May use more than one type specifier to compound effects
+
+Four Categories:
+  - Sign
+  - Storage
+  - Modifiability
+  - Access/Scope
+
+Sign
+  - `unsigned` and `signed`
+  - Use them with characters or integers
+  - Ex. `unsigned int x = 5;`
+  - Ex. `unsigned char c;`
+  - If you have a signed integer, half are held for negatives and half are held for positives
+  - An unsigned integer allows you to extend your range
+
+Storage
+  - `short`, `long`, `long long`
+  - `char` <= `short int` <= `int` <= `long int` <= `long long int`
+  - Ex. `long int i = 0;`
+
+Modifiability
+  - `const`
+  - Ex. `const int num = 42;`
+
+Access/Scope
+  - `static`
+  - Applied to global variables
+    - Changes the accessibility
+      - Limited to code in this source file
+  - Applied to local variable
+    - Changes persistance
+      - Still local, but keeps its value
+  - Ex.
+    ```
+    #include <stdio.h>
+
+    void incVar() {
+      int count = 0;
+      count++;
+
+      printf("count = %d\n", count);
+    }
+
+    int main() {
+      incVar();
+      incVar();
+      incVar();
+      incVar();
+    }
+    ```
+    Output:
+    ```
+    count = 1
+    count = 2
+    count = 3
+    count = 4
+    ```
+
+## Literal Constants
+
+  Integer type
+    - `23`, `47`, `63`, etc.
+    - [s][b]d[d*][u]
+      - s - sign
+      - b - base prefix (Ex. hexadecimal - `0x2a`)
+      - d - digit
+      - s - suffix (Ex. `long int 1l;`)
+      - [] - means it's optional
+      - * - means you can have more than one
+
+  Floating points (ex. 2.3)
+
+  String ("abc")
+
+## Implicit Type Conversion
+
+Assignments
+
+Operations
+
+Ex.
+```
+# include <stdio.h>
+int main() {
+  char myChar = 1;
+  int myInt = myChar;
+  long int myLongInt = myInt;
+
+  printf("sizeof(myChar) = %lu\n", sizeof(myChar));
+  printf("sizeof(myChar) = %lu\n", sizeof(myInt));
+  printf("sizeof(myChar) = %lu\n", msizeof(yLongInt));
+}
+```
+Output
+```
+1
+4
+8
+```
+
+Ex.
+```
+#include <stdio.h>
+
+int main() {
+  char c1 = -1; // -1
+  unsigned char c2 = c1; // 255
+  unsigned char c3 = -127; // 129
+  char c4 = c3; // 127
+}
+```
+
+Ex.
+```
+#include <stdio.h>
+
+int main() {
+  int i = 0;
+  printf(%lu\n", sizeof(i)):
+  printf(%lu\n", sizeof(2.33 + i)):
+}
+```
+Output:
+```
+4
+8
+```
+
+## Explicit Type Conversion
+
+```
+#include <stdio.h>
+
+int main() {
+  double i = 2.45;
+  printf("no casting\n %lu\n", sizeof(i)); // 8
+  printf("with casting\n %lu\n", sizeof( (int) i)); // 4
+}
+```
+
+```
+#include <stdio.h>
+
+int main() {
+  char arr[15] = "hello world"; // and \0 - null byte, marks end of a string
+  int * ptr; // since this is an integer pointer and ints are stored in 4 bit and char are stored in 1, it goes 4 bits ahead
+  ptr = arr;
+
+  printf("%c", ptr[0]); // h
+  printf("%c", ptr[1]); // o
+  printf("%c", ptr[2]); // r
 }
 ```
