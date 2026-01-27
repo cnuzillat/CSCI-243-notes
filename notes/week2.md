@@ -41,7 +41,7 @@ Pointers
     char n = 4;
     char *ptr = &n;
     ```
-      - * indicates that a variable is a pointer (dereferencing operator)
+      - `*` indicates that a variable is a pointer (dereferencing operator)
       - Contains the address of where n is being stored (ptr is pointing towards n)
   - Ex: Changing Values
     ```
