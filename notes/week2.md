@@ -358,7 +358,7 @@ Sign
 
 Storage
   - `short`, `long`, `long long`
-  - `char` <= `short int` <= `int` <= `long int` <= `long long int`
+  - `char <= short int <= int <= long int <= long long int`
   - Ex. `long int i = 0;`
 
 Modifiability
