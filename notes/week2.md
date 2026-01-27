@@ -401,19 +401,19 @@ Access/Scope
 
 ## Literal Constants
 
-  Integer type
-    - `23`, `47`, `63`, etc.
-    - [s][b]d[d*][u]
-      - s - sign
-      - b - base prefix (Ex. hexadecimal - `0x2a`)
-      - d - digit
-      - s - suffix (Ex. `long int 1l;`)
-      - [] - means it's optional
-      - * - means you can have more than one
+Integer type
+  - `23`, `47`, `63`, etc.
+  - [s][b]d[d*][u]
+    - s - sign
+    - b - base prefix (Ex. hexadecimal - `0x2a`)
+    - d - digit
+    - s - suffix (Ex. `long int 1l;`)
+    - [] - means it's optional
+    - `*` - means you can have more than one
 
-  Floating points (ex. 2.3)
+Floating points (ex. 2.3)
 
-  String ("abc")
+String ("abc")
 
 ## Implicit Type Conversion
 
