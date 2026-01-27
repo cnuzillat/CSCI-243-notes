@@ -3,7 +3,7 @@
 ## Data Types in C
 
 `bool`
-  - Must use #include <std.bool> to use
+  - Must use `#include <std.bool>` to use
 
 `char`
   - `char c = 'a';`
