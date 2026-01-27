@@ -708,3 +708,29 @@ void substring(char source[], int start, int count, char result[]) {
     result[resultCounter] = '\0';
 }
 ```
+
+## 5. Write a function called `findString()` to determine if one character string exists inside another string. The first argument to the function should be the character string that is to be searched and the second argument is the string you are interested in finding. If the function finds the specified string, have it return the location in the source string where the string was found. If the function does not find the string, have it return −1. So, for example, the call `index = findString ("a chatterbox", "hat");` searches the string `"a chatterbox"` for the string `"hat"`. Because `"hat"` does exist inside the source string, the function returns 3 to indicate the starting position inside the source string where `"hat"` was found.
+
+```
+int findString(char s1[], char s2[])
+{
+    int s2Len = 0;
+
+    while (s2[s2Len] != '\0')
+        s2Len++;
+
+    for (int i = 0; s1[i] != '\0'; i++) {
+        int j = s2Len - 1;
+
+        while (j >= 0 && s1[i + j] == s2[j])
+            j--;
+
+        if (j < 0)
+            return i;
+    }
+
+    return -1;
+}
+```
+
+## 6. Write a function called `removeString()` to remove a specified number of characters from a character string. The function should take three arguments: the source string, the starting index number in the source string, and the number of characters to remove. So, if the character array `text` contains the string `"the wrong son"`, the call `removeString (text, 4, 6);` has the effect of removing the characters “wrong” (the word “wrong” plus the space that follows) from the array `text`. The resulting string inside `text` is then `"the son"`.
