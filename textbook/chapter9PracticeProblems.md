@@ -734,3 +734,232 @@ int findString(char s1[], char s2[])
 ```
 
 ## 6. Write a function called `removeString()` to remove a specified number of characters from a character string. The function should take three arguments: the source string, the starting index number in the source string, and the number of characters to remove. So, if the character array `text` contains the string `"the wrong son"`, the call `removeString (text, 4, 6);` has the effect of removing the characters “wrong” (the word “wrong” plus the space that follows) from the array `text`. The resulting string inside `text` is then `"the son"`.
+
+```
+#include <stdio.h>
+
+void removeString(char str[], int start, int nChars)
+{
+    int i = start;
+
+    while (str[i + nChars] != '\0') {
+        str[i] = str[i + nChars];
+        i++;
+    }
+    str[i] = '\0';
+}
+
+```
+
+## 7. Write a function called `insertString()` to insert one character string into another string. The arguments to the function should consist of the source string, the string to be inserted, and the position in the source string where the string is to be inserted. So, the call `insertString (text, "per", 10);` with `text` as originally defined in the previous exercise, results in the character string `"per"` being inserted inside `text`, beginning at `text[10]`. Therefore, the character string `"the wrong person"` is stored inside the `text` array after the function returned.
+
+```
+#include <stdio.h>
+#include <string.h>
+
+void insertString(char source[], char insert[], int position)
+{
+    int sourceLen = strlen(source);
+    int insertLen = strlen(insert);
+
+    for (int i = sourceLen; i >= position; i--)
+    {
+        source[i + insertLen] = source[i];
+    }
+
+    for (int i = 0; i < insertLen; i++)
+    {
+        source[position + i] = insert[i];
+    }
+}
+```
+
+## 8. Using the `findString()`, `removeString()`, and `insertString()` functions from preceding exercises, write a function called `replaceString()` that takes three character string arguments as follows `replaceString (source, s1, s2);` and that replaces `s1` inside source with the character string `s2`. The function should call the `findString()` function to locate `s1` inside source, then call the `removeString()` function to remove `s1` from source, and finally call the `insertString()` function to insert `s2` into source at the proper location. So, the function call `replaceString (text, "1", "one");` replaces the first occurrence of the character string `"1"` inside the character string `text`, if it exists, with the string `"one"`. Similarly, the function call `replaceString (text, "*", "");` has the effect of removing the first asterisk inside the `text` array because the replacement string is the null string.
+
+```
+#include <string.h>
+
+void replaceString(char source[], char s1[], char s2[])
+{
+    int position = findString(source, s1);
+
+    if (position != -1)
+    {
+        removeString(source, position, strlen(s1));
+        insertString(source, s2, position);
+    }
+}
+```
+
+## 9. You can extend even further the usefulness of the `replaceString()` function from the preceding exercise if you have it return a value that indicates whether the replacement succeeded, which means that the string to be replaced was found inside the source string. So, if the function returns `true` if the replacement succeeds and `false` if it does not, the loop `do stillFound = replaceString (text, " ", ""); while ( stillFound );` could be used to remove all blank spaces from `text`, for example. Incorporate this change into the `replaceString()` function and try it with various character strings to ensure that it works properly.
+
+```
+#include <string.h>
+#include <stdbool.h>
+
+bool replaceString(char source[], char s1[], char s2[])
+{
+    int position = findString(source, s1);
+
+    if (position != -1)
+    {
+        removeString(source, position, strlen(s1));
+        insertString(source, s2, position);
+        return true;
+    }
+
+    return false;
+}
+```
+
+## 10. Write a function called `dictionarySort()` that sorts a dictionary, as defined in Programs 9.9 and 9.10, into alphabetical order.
+
+```
+#include <string.h>
+
+void dictionarySort(struct entry dictionary[], int entries)
+{
+    int i, j;
+    struct entry temp;
+
+    for (i = 0; i < entries - 1; ++i)
+        for (j = i + 1; j < entries; ++j)
+            if (strcmp(dictionary[i].word, dictionary[j].word) > 0)
+            {
+                temp = dictionary[i];
+                dictionary[i] = dictionary[j];
+                dictionary[j] = temp;
+            }
+}
+```
+
+## 11. Extend the `strToInt()` function from Program 9.11 so that if the first character of the string is a minus sign, the value that follows is taken as a negative number.
+
+```
+#include <stdbool.h>
+
+int strToInt (const char string[])
+{
+    int i = 0, intValue, result = 0;
+    bool negative = false;
+
+    if (string[i] == '-')
+    {
+        negative = true;
+        i++;
+    }
+
+    for ( ; string[i] >= '0' && string[i] <= '9'; ++i)
+    {
+        intValue = string[i] - '0';
+        result = result * 10 + intValue;
+    }
+
+    if (negative)
+        result = -result;
+
+    return result;
+}
+```
+
+## 12. Write a function called `strToFloat()` that converts a character string into a floating-point value. Have the function accept an optional leading minus sign. So, the call `strToFloat ("-867.6921");` should return the value `−867.6921`.
+
+```
+#include <stdbool.h>
+
+float strToFloat (const char string[])
+{
+    int i = 0;
+    int intValue;
+    float result = 0.0;
+    float fraction = 0.0;
+    float divisor = 10.0;
+    bool negative = false;
+
+    if (string[i] == '-')
+    {
+        negative = true;
+        i++;
+    }
+
+    for ( ; string[i] >= '0' && string[i] <= '9'; ++i)
+    {
+        intValue = string[i] - '0';
+        result = result * 10 + intValue;
+    }
+
+    if (string[i] == '.')
+    {
+        i++;
+        for ( ; string[i] >= '0' && string[i] <= '9'; ++i)
+        {
+            intValue = string[i] - '0';
+            fraction += intValue / divisor;
+            divisor *= 10;
+        }
+    }
+
+    result += fraction;
+
+    if (negative)
+        result = -result;
+
+    return result;
+}
+```
+
+## 13. If `c` is a lowercase character, the expression `c – 'a' + 'A'` produces the uppercase equivalent of `c`, assuming an ASCII character set. Write a function called `uppercase()` that converts all lowercase characters in a string into their uppercase equivalents.
+
+```
+void uppercase (char string[])
+{
+    int i;
+
+    for (i = 0; string[i] != '\0'; ++i)
+        if (string[i] >= 'a' && string[i] <= 'z')
+            string[i] = string[i] - 'a' + 'A';
+}
+```
+
+## 14. Write a function called `intToStr()` that converts an integer value into a character string. Be certain the function handles negative integers properly.
+
+```
+#include <stdbool.h>
+
+void intToStr (int number, char string[])
+{
+    int i = 0;
+    bool negative = false;
+    int temp;
+
+    /* Handle negative numbers */
+    if (number < 0)
+    {
+        negative = true;
+        number = -number;
+    }
+
+    /* Extract digits */
+    do
+    {
+        temp = number % 10;
+        string[i++] = temp + '0';
+        number /= 10;
+    }
+    while (number != 0);
+
+    /* Add minus sign if needed */
+    if (negative)
+        string[i++] = '-';
+
+    string[i] = '\0';
+
+    /* Reverse the string */
+    for (int j = 0; j < i / 2; ++j)
+    {
+        char swap = string[j];
+        string[j] = string[i - j - 1];
+        string[i - j - 1] = swap;
+    }
+}
+```
