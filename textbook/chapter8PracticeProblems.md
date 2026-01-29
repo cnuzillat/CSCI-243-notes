@@ -297,3 +297,23 @@ clockKeeper(dateAndTime time) {
 ```
 
 ## 6. Replace the `dateUpdate()` function from Program 8.4 with the modified one that uses compound literals as presented in the text. Run the program to verify its proper operation.
+```
+// Function to calculate tomorrow's date
+struct date dateUpdate (struct date today)
+{
+  struct date tomorrow;
+  int numberOfDays (struct date d);
+
+  if ( today.day != numberOfDays (today) ) {
+    tomorrow = (struct date) {today.day + 1, today.month, today.year};
+  }
+  else if ( today.month == 12 ) { // end of year
+    tomorrow  = (struct date) {1, 1, today.year + 1};
+  }
+  else { // end of month
+    tomorrow = (struct date) {1, today.month + 1, today.year};
+  }
+
+  return tomorrow;
+}
+```
