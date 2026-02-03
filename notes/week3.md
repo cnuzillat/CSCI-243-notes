@@ -301,6 +301,7 @@ Pass by Reference
 Examples
 
 ```
+// Pass by value
 #include <stdio.h>
 
 void swap(int x, int y) {
@@ -325,6 +326,7 @@ x = 10, y = 20 // Local variable vs. formal parameter
 ```
 
 ```
+// Pass by reference
 #include <stdio.h>
 
 void swap(int * x, int * y) {
@@ -344,4 +346,65 @@ int main() {
 Output:
 ```
 x = 20, y = 10
+```
+
+```
+int main() {
+  int * a = 1; // Pointing to address 1
+  int * b = 2;
+  print(&a);
+```
+
+```
+// Passing a pointer by reference
+void swap(int ** a, int ** b) { // Something that points to a pointer
+  int * t = * a;
+  * a = * b;
+  * b = t;
+  return;
+}
+
+int main() {
+  int * a = 1;
+  int * b = 2;
+  swap(&a , &b); // Pointers are pass by value
+  print("%p, %p", a, b); // 2, 1
+```
+
+```
+void fun(int x[], int num) { // [] is equivalent to *
+  for (int i = 0; i < num; i++) {
+    x[i] = x[i] + 1; // equivalent to x[1] = *(x + 1)
+  }
+}
+
+int main() {
+  int x[2] = {1, 2};
+  fun(x, 2); // address of x[0] is copied to x[] in fun
+  printf("%d, %d\n", x[0], x[1]);
+}
+```
+Output:
+```
+2, 3
+```
+
+```
+void fun(int x[], int num) { // [] is equivalent to *
+  for (int i = 0; i < num; i++) {
+    x[i] = x[i] + 1; // equivalent to x[1] = *(x + 1)
+  int y[2] = {5, 6};
+  x = y;
+  }
+}
+
+int main() {
+  int x[2] = {1, 2};
+  fun(x, 2); // address of x[0] is copied to x[] in fun
+  printf("%d, %d\n", x[0], x[1]);
+}
+```
+Output:
+```
+2, 3
 ```
