@@ -282,10 +282,10 @@ Global Variables
 ```
 #include <stdio.h>
 
-int gblVar = 10;
+int glbVar = 10;
 
 void fun() {
-  gblVar += 5;
+  glbVar += 5;
   printf("%d\n", glbVar);
 }
 
