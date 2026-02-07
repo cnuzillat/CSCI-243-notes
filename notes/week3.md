@@ -226,7 +226,7 @@ Better system (but still some issues) - P1, P2, ..., Pn <--> ISA <--> Hardware
   - Issues that occur
     - Multiple processes might want to occur at the same time
     - One process overwrites another in memory
-    - Processes might not trust each (can't read/write to the memory that current process is using)
+    - Processes might not trust each other (can't read/write to the memory that current process is using)
 
 Even better system - P1, P2, ..., Pn <--> ABI (Application binary interface) <--> OS Kernel <--> ISA <--> Hardware
   - OS is the only thing able to directly access the Hardware
