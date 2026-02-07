@@ -113,7 +113,7 @@ int main(int argc, char * argv[]) { // argc is the # of input line arguments, ar
 }
 ```
 
-Putting quotes around on argument ensures that it is taken as one argument
+Putting quotes around an argument ensures that it is taken as one argument
   - "abeer is awesome" vs. abeer is awesome
 
 Print Integers
