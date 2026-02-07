@@ -240,7 +240,7 @@ Goals of the OS Kernel
   - Resource Management
     - How the processes share hardware
       - Context switching
-        - The OS comes in a saves the state of the old process that waws running and loads the state of the new process that is going to run
+        - The OS comes in and saves the state of the old process that was running and loads the state of the new process that is going to run
           - P1 -> OS -> P2 -> OS -> P1 -> OS -> P2...
 
 Virtual Memory
