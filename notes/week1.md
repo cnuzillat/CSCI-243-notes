@@ -13,7 +13,7 @@ In order to tell a machine to do something (ex. add a constant to a number in me
   - Where the number is stored in memory
   - Where to store the result
   - Value of the constant
-  - Tell addition needs to happen
+  - Tell the machine that addition needs to happen
 
 Memory is seperated by different instances, each of these instances habe their own memory address
 
