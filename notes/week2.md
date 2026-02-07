@@ -203,7 +203,7 @@ int main() {
   - Not everything you can do with switch statements, you can do with if/else statements
 
 ```
-#inlcude <stdio.h>
+#include <stdio.h>
 
 int main() {
   int num = 0;
