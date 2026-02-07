@@ -152,7 +152,7 @@ int main() {
 }
 ```
 
-Create Header File
+Creating a Header File
 ```
 #ifndef CONSTANT_H
 #define CONSTANT_H
@@ -163,7 +163,7 @@ Create Header File
 #endif
 ```
 
-Using Custom Header File
+Using Custom Header Files
 ```
 #include <stdio.h>
 #include "constants.h" // Put in quotes to tell the compiler that it's in that current directory
