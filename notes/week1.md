@@ -7,7 +7,7 @@ Need for ways of making machine instruction easier
 Information in a computer is some physical quantity such as voltages
 
 Digital systems or machines have 2 levels of this physical quantity
-  -Labeled as `0` and `1`
+  - Labeled as `0` and `1`
 
 In order to tell a machine to do something (ex. add a constant to a number in memory) 
   - Where the number is stored in memory
