@@ -155,7 +155,7 @@ int main() {
 Create Header File
 ```
 #ifndef CONSTANT_H
-#define CONSTANTS_H
+#define CONSTANT_H
 
 #define INCHES_PER_CENTIMETER 0.394
 #define CENTIMETERS_PER_INCH (1 / INCHES_PER_CENTIMETER)
