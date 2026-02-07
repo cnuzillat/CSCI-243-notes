@@ -448,7 +448,7 @@ int main() {
   char c1 = -1; // -1
   unsigned char c2 = c1; // 255
   unsigned char c3 = -127; // 129
-  char c4 = c3; // 127
+  char c4 = c3; // -127
 }
 ```
 
