@@ -4,7 +4,7 @@
 
 Need for ways of making machine instruction easier
 
-Informaion in a computer is some physical quantity such as voltages
+Information in a computer is some physical quantity such as voltages
 
 Digital systems or machines have 2 level of this physical quantity
   -Labeled as `0` and `1`
