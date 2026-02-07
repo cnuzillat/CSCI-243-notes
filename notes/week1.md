@@ -101,7 +101,7 @@ int main(void) {
   - `./` to run a compiled program
   - `gcc hello.c && ./.out` does both in one step
 
-Hello input
+Hello Input
 ```
 #include <stdio.h>
 
@@ -116,7 +116,7 @@ int main(int argc, char * argv[]) { // argc is the # of input line arguments, ar
 Putting quotes around on argument ensures that it is taken as one argument
   - "abeer is awesome" vs. abeer is awesome
 
-Print integers
+Print Integers
 ```
 #include <stdio.h>
 
