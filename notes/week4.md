@@ -45,7 +45,7 @@ This is useful when passing a function as input to another function
 #inlcude <stdlib.h>
 #include <string.h>
 
-int lessthan_int(consdt void *a, const void *b) {
+int lessthan_int(const void *a, const void *b) {
   return(*((int *)a) - *((int * b)));
 }
 
