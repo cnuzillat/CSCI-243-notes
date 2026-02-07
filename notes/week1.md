@@ -24,7 +24,7 @@ Machine Language (example): `0010 1010 0011 0111 0011 0010 1111`
   - Next eight might be the value of the constant
     - Assembley Language (turning 0's and 1's into human words): `addi $1, $2, 350`
 
-An assembler converts assembly language into maching langauge
+An assembler converts assembly language into machine langauge
 
 Suppose you wanted to do `a+b*c+d`
   - Would require you to program something to produce assembly languge to make it easier (high-level language)
