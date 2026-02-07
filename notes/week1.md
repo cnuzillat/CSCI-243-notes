@@ -146,7 +146,7 @@ CONSTANTs
 
 int main() {
   int x = 10 * CONSTANT;
-  int y = 20 - CONSTANT
+  int y = 20 - CONSTANT;
 
   printf("x = %d, y = %d, CONSTANT = %d\n", x, y, CONSTANT);
 }
