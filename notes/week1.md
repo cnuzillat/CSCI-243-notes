@@ -105,7 +105,7 @@ Hello Input
 ```
 #include <stdio.h>
 
-//this is a comment
+// this is a comment
 int main(int argc, char * argv[]) { // argc is the # of input line arguments, argv[] array of strings
   printf("Hello %s\n", argv[1]);
 
