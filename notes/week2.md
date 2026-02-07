@@ -377,7 +377,7 @@ Access/Scope
     #include <stdio.h>
 
     void incVar() {
-      int count = 0;
+      static int count = 0;
       count++;
 
       printf("count = %d\n", count);
