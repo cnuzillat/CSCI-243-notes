@@ -422,7 +422,7 @@ Operations
 
 Ex.
 ```
-# include <stdio.h>
+#include <stdio.h>
 int main() {
   char myChar = 1;
   int myInt = myChar;
@@ -430,7 +430,7 @@ int main() {
 
   printf("sizeof(myChar) = %lu\n", sizeof(myChar));
   printf("sizeof(myChar) = %lu\n", sizeof(myInt));
-  printf("sizeof(myChar) = %lu\n", msizeof(yLongInt));
+  printf("sizeof(myChar) = %lu\n", sizeof(myLongInt));
 }
 ```
 Output
