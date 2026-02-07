@@ -169,7 +169,7 @@ Using Custom Header Files
 #include "constants.h" // Put in quotes to tell the compiler that it's in that current directory
 
 void convert(int inches) {
-  printf("%d inches = %f centimeters\n", inches, inches * CENTIMERTERS_PER_INCH);
+  printf("%d inches = %f centimeters\n", inches, inches * CENTIMETERS_PER_INCH);
 }
 
 int main() {
