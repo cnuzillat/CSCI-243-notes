@@ -49,7 +49,6 @@ Pointers
     ```
       - Changes the value of n
   - `&ptr` is the address of the pointer
-  - `*n = 5` takes the contents of n and goes to the address equal to the value and changes the value of that address
   - Ex:
     ```
     ptr = 4;
