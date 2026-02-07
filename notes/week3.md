@@ -24,7 +24,7 @@ Remainder Operator
 
 int main() {
   int number = 10;
-  char * result;
+  char result;
 
   result = (number > 0) ? "Positive" : "non - positive";
 
