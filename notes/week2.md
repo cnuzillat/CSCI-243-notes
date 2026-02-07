@@ -22,7 +22,7 @@
   - 4 bytes associated with them, 32 bits (CS server) - can represent about 4 billion different values
 
 `float`
-  - Data types that can hold digets after the decimal place
+  - Data types that can hold digits after the decimal place
   - `float x = 2.3;`
   - Much slower than using just `int` or `char`
   - At least 6 digits of precision
