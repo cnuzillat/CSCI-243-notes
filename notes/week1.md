@@ -15,7 +15,7 @@ In order to tell a machine to do something (ex. add a constant to a number in me
   - Value of the constant
   - Tell the machine that addition needs to happen
 
-Memory is seperated by different instances, each of these instances habe their own memory address
+Memory is seperated by different instances, each of these instances have their own memory address
 
 Machine Language (example): `0010 1010 0011 0111 0011 0010 1111`
   - First four bits might tell the machine what to do (ex. addition)
