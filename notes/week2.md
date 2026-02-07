@@ -32,7 +32,7 @@
   - At least 10 digit precision
 
 `void`
-  - Nothing is returned by a function of nothing is passed into a function
+  - Nothing is returned by a function or nothing is passed into a function
 
 Pointers
   - Contents are not the data that you are looking for, but instead it tells you where that data can be found
