@@ -213,7 +213,7 @@ int main() {
   if (num + 1){printf("3\n");}
   if (num - 1){printf("4\n");} // Would print
   if('0'){printf("5\n");}
-  if('a'){printf("6\n);}
+  if('a'){printf("6\n");}
   if(' ' - 32){printf("7\n");} // Would not print
 }
 ```
