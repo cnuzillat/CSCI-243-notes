@@ -351,3 +351,18 @@ Output:
 ```
 12, 7, 6
 ```
+
+```
+#include <stdio.h>
+
+char *c[] = {"Easiest", "Question", "of_my", "Life");
+char ** cp[] = {c+3, c+2, c+1, c};
+char ***cpp = cp;
+
+int main() {
+  printf("%s\n", *(*(++cpp))); // of_my
+  printf("%s\n", *(--(*(++cpp))) + 3); // iest
+  printf("%s\n", *(cpp[-2]) + 3); // e
+  printf("%s\n", cpp[-1][-1] + 1); // uestion
+}
+```
