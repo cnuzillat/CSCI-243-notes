@@ -24,4 +24,4 @@ position = initial + rate * 60
   - First step in compilation process is a lexical analyzer (scanner)
     - Reads the stream of characters making up the source program and groups characters into meaningful squences called lexemes
       - Lexeme is a meaningful group of characters
-      - Produces output tokens of the meaningful groups: <id, 1> <=> <id, 2> <+> <id, 3> <60>
+      - Produces output tokens of the meaningful groups: <id, 1> <=> <id, 2> <+> <id, 3> <*> <60>
