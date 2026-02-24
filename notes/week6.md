@@ -165,4 +165,50 @@ CPP (C PreProcessor) directives
     #endif
     ```
 
+    cond_comp_ex4
+    ```
+    #include <stdio.h>
+    #define DEBUG
+
+    int main() {
+      #ifdef DEBUG
+        printf("Debugging\n");
+      #else
+        printf("Not debugging\n");
+      #endif
+
+      #ifdef DEBUG
+        #undef DEBUG
+        #ifndef DEBUG
+          printf("Debugging turned off\n");
+        #endif
+      #endif
+
+      return(0);
+    }
+    ```
+      - You could define a macro with -DDEBUG when compiling the program
+
+    cond_comp_ex5
+    ```
+    #define OPTION_A
+    
+    #if defined(OPTION_A)
+    option a
+    #elif defined(OPTION_B)
+    option b
+    #else
+      #error No options was selected! Do better stupid!
+    #endif
+    ```
+
+    misc_ex
+    ```
+    #include <stdio.h>
+
+    int main() {
+      // #line 10 "weird.c"
+      printf("%s, %d, %s, %s\n", __FILE__, __LINE__, __DATE__, __TIME__); // misc_ex.c, 4, Feb 24 2026, 14:19:02
+    ```
+
 Can be run as a stand alone filter on non-C code (e.g. to preprocess assembly language)
