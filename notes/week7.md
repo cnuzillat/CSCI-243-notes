@@ -61,7 +61,7 @@ int main() {
   char buffer[BUF_LENGTH];
   int n;
 
-  while((n = read(STDIN_FILENO, buffer, BUF_LENGTH)) > 0 ) {
+  while((n = read(STDIN_FILENO, buffer, BUF_LENGTH)) > 0) {
     write(STDOUT_FILENO, buffer, n);
   }
 
