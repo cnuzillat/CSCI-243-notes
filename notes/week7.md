@@ -152,7 +152,7 @@ int main(int argc, char * argv[]) {
 
   if (argc != 2) {
     fprintf(stderr, "Usage: %s ...\");
-    return EXIT_FAILURE
+    return EXIT_FAILURE;
   }
   argc--;
 
@@ -207,6 +207,7 @@ int main(int argc, char * argv[]) {
     fprintf(stderr, "%s", emsg);
     return EXIT_FAILURE;
   }
+
   if (fclose(fp) == -1) {
     perror("fclose()"); // prints exactly why the last system call failed
   }
@@ -217,7 +218,11 @@ int main(int argc, char * argv[]) {
 
 bin_in.c
 ```
-#include <>
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <errno.h>
+#include <unstd.h>
 
 typedef struct FileData {
   double aDouble;
@@ -252,6 +257,26 @@ int main(int argc, char * argv[]) {
 
   do {
     nread = fread(&count, sizeof(size_t), 1, fp);
+    if (nread != 1) {
+      //error handling
+      break;
+    }
+
+    for (size_t j = 0; j < count; j++) {
+      nread = fread(&element, length, 1, fp);
+      if (nread != 1) {
+        break;
+      }
+      else {
+        printf("\n%g, %d, %d, %c\n", element.aDouble, element.anInt, element.aShort, element.aChar);
+      }
+    }
   } while (0);
+
+  if (fclose(fp) == -1) {
+    //error handling goes here
+  }
+
+  return EXIT_SUCCESS;
 }
 ```
