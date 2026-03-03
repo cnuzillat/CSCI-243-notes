@@ -32,7 +32,7 @@ Fundamental I/O routines do byte-oriented I/O
 Transfer upto "length" bytes between fd and buffer
 
 Return value:
-  - 1: error - np data transferred
+  - 1: error - no data transferred
   - 0: no data transferred
   - else: number of bytes "transferred"
 
