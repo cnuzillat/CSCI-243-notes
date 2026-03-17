@@ -351,7 +351,7 @@ stackADTV2.h
 #include <stdbool.h>
 
 #ifndef STACK_IMPLEMENTATION
-typedef struct {} * StackADT; // StackADT is a pointer to stackStruct
+typedef struct {} * StackADT; // StackADT is a pointer to an anonymous struct - can't dereference it
 #endif
 
 StackADT stk_create(void); // driver calls this whenever an instance of a stack is requested
