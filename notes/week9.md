@@ -288,3 +288,156 @@ int main() {
   x = f(), g(); // 12
 }
 ```
+
+## Binary Numbers
+
+1's and 0's
+
+0, 1, 10, 11, 100, 101, 110, 111, etc.
+
+To get value of binary number do the value of the number multiplied by its 2 to the power of its place
+
+To make a number + or - just add a bit assigning that value
+
+Bit Patterns:
+  - 0 - 0000
+  - 1 - 0001
+  - 2 - 0010
+  - 3 - 0011
+  - 4 - 0100
+  - 5 - 0101
+  - 6 - 0110
+  - 7 - 0111
+
+  - -1 - 1111
+  - -2 - 1110
+  - -3 - 1101
+  - -4 - 1100
+  - -5 - 1011
+  - -6 - 1010
+  - -7 - 1001
+  - -8 - 1000
+
+One's complement
+
+Two's complement - shifting range by one
+  - Flip everything after the right leading 1 (0101 -> 1011)
+  - Always leads to the negative of a number
+
+Adding 1's (-) or 0's (+) to left of a number doesn't change the meaning of the number
+
+Subtraction comes from the bit falling off
+
+This shows why overflowing addition can lead to a negative number
+
+## Bitwise Operators
+
+Operate at the bit level
+
+Two forms:
+  - Bitwise logical
+  - Shift
+
+Bitwise Logical:
+  A | B | A & B | A | B | A ^ B | ~A
+  0   0     0       0       0     1
+  0   1     0       1       1     1
+  1   0     0       1       1     0
+  1   1     1       1       0     0
+
+Shift:
+  - Shift left (<<)
+    - 0101 -> 1010 -> 0100 -> 0000
+  - Shift right (>>)
+    - Ex. 0101 -> 0010 -> 0001 -> 0000
+  - Equivalent to multiplying or dividing by 2
+
+## Examples
+
+bitwise.c
+```
+
+#include <stdio.h>
+
+void binprint(unsigned int n, unsigned int bits) {
+  char ch[bits + 1];
+  for (int i = bits; i > 0; i--) {
+    ch[i - 1] = n & 1 ? '1' : '0';
+    n >>= 1;
+  }
+  ch[bits] = '\0';
+  printf("%s", ch);
+}
+
+void testing(unsigned int v1, unsigned int v2, unsigned int res, const char * op, unsigned int bits) {
+  binprint(v1, bits);
+  printf(" %s ", op);
+  binprint(v2, bits);
+  printf(" = ");
+  binprint(res, bits);
+  printf("\n");
+
+int main() {
+  testing(0xb3, 0x2e, 0xb3 "&" 0x2e, "&", 8):
+  testing(0xb3, 0x2e, 0xb3 "|" 0x2e, "&", 8):
+  testing(0xb3, 0x2e, 0xb3 "^" 0x2e, "&", 8):
+
+  printf(" ~ ");
+  binprint(0x2e, 8);
+  printf(" = ");
+  binprint(~0x2e, 8);
+  printf("\n");
+
+  printf("\nBoolean:\n");
+  testing(0xb, 0x6, 0xb && 0x6, "&&", 4);
+  printf("\nBitwise\n");
+  testing(0xb, 0x6, 0xb && 0x6, "&", 4);
+
+  printf("\nBoolean:\n");
+  testing(0xb, 0x4, 0xb && 0x4, "&&", 4);
+  printf("\nBitwise\n");
+  testing(0xb, 0x4, 0xb && 0x4, "&", 4);
+}
+```
+
+count_set_bits.c
+```
+#include <stdio.h>
+
+unsigned int countSetBits(unsigned int n) {
+  unisgned int count = 0;
+  while (n) {
+    count += n & 1;
+    n >>= 1;
+  }
+  return count;
+}
+
+int main() {
+  unsigned int i = 11;
+  printf("%d\n", countSetBits(i));
+  return 0;
+
+}
+```
+
+count_set_bits2.c
+```
+#include <stdio.h>
+
+unsigned int countSetBits(unsigned int n) {
+  unisgned int count = 0;
+  while (n) {
+    n &= (n - 1);
+    count++;
+  }
+  return count;
+}
+
+int main() {
+  unsigned int i = 11;
+  printf("%d\n", countSetBits(i));
+  return 0;
+
+}
+```
