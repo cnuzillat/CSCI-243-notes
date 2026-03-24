@@ -352,8 +352,6 @@ Shift:
     - Ex. 0101 -> 0010 -> 0001 -> 0000
   - Equivalent to multiplying or dividing by 2
 
-## Examples
-
 bitwise.c
 ```
 
@@ -441,3 +439,55 @@ int main() {
 
 }
 ```
+
+shift.c
+```
+#include <stdio.h>
+
+void testing(unsigned int v1, int v2, unsigned int res, const char * op) {
+  printf("%#010x", v1);
+  printf(" %s ", op);
+  printf("%d = ", v2);
+  printf("%#010x", res);
+  printf("\n");
+}
+
+int main() {
+  unsigned int v1 = 0x12345678; // left-most bit is 0 -- positive
+  unsigned int v2 = 0x87654321; // negative -- 1000 (8)
+
+  int v3 = 0x12345678;
+  int v4 = 0x87654321;
+
+  printf("\n unsigned, positive number: \n");
+  testing(v1, 4, v1 << 4, "<<"); // shifts one number to the left and drops the 1 (int is 4 bits)
+  testing(v1, 4, v1 >> 4, ">>");
+
+  printf("\n unsigned, negative number: \n");
+  testing(v2, 4, v2 << 4, "<<");
+  testing(v2, 4, v2 >> 4, ">>");
+
+  printf("\n signed, positive number: \n");
+  testing(v3, 4, v3 << 4, "<<");
+  testing(v3, 4, v3 >> 4, ">>");
+
+  printf("\n signed, negative number: \n");
+  testing(v4, 4, v4 << 4, "<<");
+  testing(v4, 4, v4 >> 4, ">>"); // not 0 - 1111 - keeps the negative value
+}
+```
+
+Use ~&|^:
+  - To check if a positive number is even or odd
+    - n & 1
+      - ex. 101 & 001 = 1
+  - Detect if two integers have opposite signs
+    - (x ^ y) < 0
+      - ex. 0101 ^ 1011 = 1110
+  - Add one to an integer
+    - ~x
+      - ~x = x + 1
+  - Supposed you want to encrypt a message x, you can encrypt it with a key y, x ^ y is the encrypted text
+    - x ^ y ^ y decrypts your message
+  - Swap two integers without using a third variable
+    - x = x ^ y -> y = y ^ x -> x = x ^ y
